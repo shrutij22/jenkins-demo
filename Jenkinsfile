@@ -1,16 +1,18 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
-                echo 'Building the project...'
-                sh 'mvn clean install'
+                echo 'Compiling Java program...'
+                sh 'javac Main.java'
             }
         }
-        stage('Test') {
+
+        stage('Run') {
             steps {
-                echo 'Running tests...'
-                sh 'mvn test'
+                echo 'Running Java program...'
+                sh 'java Main'
             }
         }
     }
