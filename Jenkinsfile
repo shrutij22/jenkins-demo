@@ -19,7 +19,7 @@ pipeline {
 
     post {
         success {
-            archiveArtifacts artifacts: 'out/*.class', fingerprint: true
+            archiveArtifacts artifacts: 'src/*.class', fingerprint: true
         }
     }
 }
