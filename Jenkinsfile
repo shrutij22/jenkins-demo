@@ -23,3 +23,4 @@ pipeline {
             // Since you don't have a JAR, let's archive the compiled class files in src folder
             archiveArtifacts artifacts: 'src/*.class', fingerprint: true
         }
+}
