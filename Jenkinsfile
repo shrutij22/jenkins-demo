@@ -5,14 +5,14 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java program...'
-                sh 'javac Main.java'
+                sh 'javac src/Main.java'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program...'
-                sh 'java Main'
+                sh 'java -cp src Main'
             }
         }
     }
