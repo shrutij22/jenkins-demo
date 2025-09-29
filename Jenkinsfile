@@ -5,7 +5,14 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java program...'
-                sh 'javac src/Main.java'
+                sh 'javac -d src src/Main.java'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo 'Packaging JAR...'
+                sh 'jar cf src/Main.jar -C src .'
             }
         }
 
@@ -19,7 +26,7 @@ pipeline {
 
     post {
         success {
-            archiveArtifacts artifacts: 'src/*.class', fingerprint: true
+            archiveArtifacts artifacts: 'src/Main.jar', fingerprint: true
         }
     }
 }
