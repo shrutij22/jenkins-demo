@@ -7,7 +7,7 @@ LOCAL_SAVE_PATH = "./downloaded.jar"  # where to save locally
 
 # Your Jenkins username and API token (or password)
 USERNAME ="shrutij22"
-API_TOKEN = "11d2ed45dfa41ee2e20e4605a5cfe11ad3"
+API_TOKEN = ""
 
 def is_build_successful():
     api_url = f"{JENKINS_URL}/lastBuild/api/json"
