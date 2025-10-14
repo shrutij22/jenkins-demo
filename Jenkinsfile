@@ -5,7 +5,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java program...'
-                sh 'javac -d src src\\Main.java'
+                sh 'javac -d bin src/Main.java'
             }
         }
 
