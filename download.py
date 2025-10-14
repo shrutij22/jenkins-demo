@@ -5,8 +5,9 @@ JENKINS_URL = "http://localhost:8080/job/GithubFreestyle"
 JAR_RELATIVE_PATH = "src/Main.jar"
 LOCAL_SAVE_PATH = "./downloaded.jar"
 
-USERNAME = "shrutij22"
-API_TOKEN = "11c15911228d5adcde906c967c3b066d8d"
+USERNAME = os.environ.get("JENKINS_USER")
+API_TOKEN = os.environ.get("JENKINS_API_TOKEN")
+
 
 def is_build_successful():
     api_url = f"{JENKINS_URL}/lastSuccessfulBuild/api/json"
