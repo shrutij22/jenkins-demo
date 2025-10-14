@@ -2,7 +2,7 @@ import requests
 import os
 
 JENKINS_URL = "http://localhost:8080/job/GithubFreestyle"
-JAR_RELATIVE_PATH = "src/Main.jar"  # adjust to your actual JAR location
+JAR_RELATIVE_PATH = "src/Main.jar"
 LOCAL_SAVE_PATH = "./downloaded.jar"
 
 USERNAME = "shrutij22"
@@ -14,12 +14,11 @@ def is_build_successful():
     if resp.status_code != 200:
         print(f"Failed to get build info, status code {resp.status_code}")
         return False
-    # If we got a 200, lastSuccessfulBuild exists
     return True
 
 def download_jar():
-   jar_url = f"{JENKINS_URL}/lastSuccessfulBuild/artifact/src/Main.jar"
-   resp = requests.get(jar_url, auth=(USERNAME, API_TOKEN))
+    jar_url = f"{JENKINS_URL}/lastSuccessfulBuild/artifact/{JAR_RELATIVE_PATH}"
+    resp = requests.get(jar_url, auth=(USERNAME, API_TOKEN))
     if resp.status_code == 200:
         with open(LOCAL_SAVE_PATH, 'wb') as f:
             f.write(resp.content)
