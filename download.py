@@ -1,13 +1,14 @@
 import requests
 import os
 
-JENKINS_URL = "http://localhost:8080/job/GithubFreestyle"
-JAR_RELATIVE_PATH = "src/Main.jar"
-LOCAL_SAVE_PATH = "./downloaded.jar"
 
-USERNAME = os.environ.get("JENKINS_USER")
-API_TOKEN = os.environ.get("JENKINS_API_TOKEN")
+JENKINS_URL = "http://localhost:8080/job/jenkins-demo"
+JAR_RELATIVE_PATH = "src/Main.jar"  # adjust to your actual JAR location
+LOCAL_SAVE_PATH = "./downloaded.jar"  # where to save locally
 
+# Your Jenkins username and API token (or password)
+USERNAME ="shrutij22"
+API_TOKEN = "11d2ed45dfa41ee2e20e4605a5cfe11ad3"
 
 def is_build_successful():
     api_url = f"{JENKINS_URL}/lastSuccessfulBuild/api/json"
