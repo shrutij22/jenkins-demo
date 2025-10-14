@@ -3,20 +3,19 @@ import os
 
 JENKINS_URL = "http://localhost:8080/job/GithubFreestyle"
 JAR_RELATIVE_PATH = "src/Main.jar"  # adjust to your actual JAR location
-LOCAL_SAVE_PATH = "./downloaded.jar"  # where to save locally
+LOCAL_SAVE_PATH = "./downloaded.jar"
 
-# Your Jenkins username and API token (or password)
-USERNAME ="shrutij22"
+USERNAME = "shrutij22"
 API_TOKEN = "11c15911228d5adcde906c967c3b066d8d"
 
 def is_build_successful():
-    api_url = api_url = f"{JENKINS_URL}/lastSuccessfulBuild/api/json"
+    api_url = f"{JENKINS_URL}/lastSuccessfulBuild/api/json"
     resp = requests.get(api_url, auth=(USERNAME, API_TOKEN))
     if resp.status_code != 200:
         print(f"Failed to get build info, status code {resp.status_code}")
         return False
-    build_info = resp.json()
-    return build_info.get('result') == 'SUCCESS'
+    # If we got a 200, lastSuccessfulBuild exists
+    return True
 
 def download_jar():
     jar_url = f"{JENKINS_URL}/lastSuccessfulBuild/artifact/{JAR_RELATIVE_PATH}"
@@ -37,9 +36,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
