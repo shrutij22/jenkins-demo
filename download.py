@@ -19,7 +19,7 @@ def is_build_successful():
 
 def download_jar():
    jar_url = f"{JENKINS_URL}/lastSuccessfulBuild/artifact/src/Main.jar"
-    resp = requests.get(jar_url, auth=(USERNAME, API_TOKEN))
+   resp = requests.get(jar_url, auth=(USERNAME, API_TOKEN))
     if resp.status_code == 200:
         with open(LOCAL_SAVE_PATH, 'wb') as f:
             f.write(resp.content)
