@@ -10,7 +10,7 @@ USERNAME ="shrutij22"
 API_TOKEN = "11c15911228d5adcde906c967c3b066d8d"
 
 def is_build_successful():
-    api_url = f"{JENKINS_URL}/lastBuild/api/json"
+    api_url = api_url = f"{JENKINS_URL}/lastSuccessfulBuild/api/json"
     resp = requests.get(api_url, auth=(USERNAME, API_TOKEN))
     if resp.status_code != 200:
         print(f"Failed to get build info, status code {resp.status_code}")
